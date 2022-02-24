@@ -1,0 +1,57 @@
+﻿<ribbonNs:RibbonWindow x:Class="test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ribbonNs="clr-namespace:System.Windows.Controls.Ribbon;assembly=System.Windows.Controls.Ribbon"
+        mc:Ignorable="d"
+        Title="英语答题系统" Height="450" Width="800"  Loaded="Ribbon_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Ribbon Name="Ribbon" SelectionChanged="Ribbon_SelectionChanged">
+            <!--Ribbon Application Menu-->
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu KeyTip="F"  IsEnabled="False" Visibility="Hidden" Width="0">
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+
+            <!--Ribbon Tab #1 Home-->
+            <RibbonTab Header="答题界面" KeyTip="H" Name="question">
+                <RibbonGroup Header="">
+                    <RibbonButton  Label="使用帮助" LargeImageSource="images/help.png" />
+                </RibbonGroup>
+                <RibbonGroup Header="" HorizontalAlignment="Right"   >
+                    <RibbonButton  Label="退出系统"  LargeImageSource="images/logout.png" Click="Quit"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="重新练习" KeyTip="L" Name="list"  Visibility="Hidden">
+                <RibbonGroup Header="">
+                    <RibbonButton  Label="使用帮助" LargeImageSource="images/help.png"/>
+                </RibbonGroup>
+                <RibbonGroup Header="" HorizontalAlignment="Right"  >
+                    <RibbonButton  Label="退出系统"  LargeImageSource="images/logout.png" Click="Quit"/>
+                </RibbonGroup>
+                <RibbonGroup Header="" HorizontalAlignment="Right"  >
+                    <RibbonButton  Label="选择词库"  LargeImageSource="images/logout.png" Click="Select"/>
+                </RibbonGroup>
+                <RibbonGroup Header="" HorizontalAlignment="Right"  >
+                    <RibbonButton  Label="开始练习"  LargeImageSource="images/logout.png" Click="ReStart"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+
+        <Grid Name="main" Grid.Row="1">
+            <Frame x:Name="PageContral"  Source="QuestionView.xaml" VerticalContentAlignment ="Center"  HorizontalContentAlignment ="Center"   NavigationUIVisibility="Hidden"/>
+        </Grid>       
+
+        <StatusBar Grid.Row="2"  Name="StatusPanel" VerticalAlignment="Bottom">
+            <StatusBarItem  HorizontalAlignment="Right">
+                <TextBlock Name="system_time" Text="15:56 2020/10/23" Margin="5" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</ribbonNs:RibbonWindow>
